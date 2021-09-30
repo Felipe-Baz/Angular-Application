@@ -34,4 +34,12 @@ html {
   margin-right: 10px !important;
 }
 
+.flx-center-row{
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+}
 
+.flx-evly{
+  justify-content: space-evenly;
+}

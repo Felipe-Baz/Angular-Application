@@ -8,13 +8,13 @@ I made this project to fixed my knowledge in web development, and to learn more 
 
 For better identification, emojis will be used to identify what kind of changes were applied.
 
--:package: new feature
+- :package: new feature
 
--:up: update
+- :up: update
 
--:bug: bug fix
+- :bug: bug fix
 
--:checkered_flag: launch
+- :checkered_flag: launch
 
 ## Sections of the site
 
