@@ -58,3 +58,9 @@ In the Category section, a "card" is presented. In this card we have a table wit
 ### General functionality
 
 (Image)
+
+#### (Menu SideBar)
+
+(Dialog)
+
+(Formulario edição categoria)
