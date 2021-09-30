@@ -8,7 +8,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatInputModule } from '@angular/material/input'
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   imports: [
     MatToolbarModule,
@@ -20,7 +24,11 @@ import { MatInputModule } from '@angular/material/input'
     MatCardModule,
     MatTableModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatNativeDateModule
   ],
   exports: [
     MatToolbarModule,
@@ -32,8 +40,12 @@ import { MatInputModule } from '@angular/material/input'
     MatCardModule,
     MatTableModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatNativeDateModule
   ]
 })
-  
+
 export class MaterialModule { }

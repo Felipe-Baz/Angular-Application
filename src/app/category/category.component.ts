@@ -29,7 +29,6 @@ export class CategoryComponent implements OnInit {
   public editCategory(inputCategory: Category) {
 
     this.dialog.open(CategoryEditComponent, {
-      disableClose: true,
       data: { editableCategory: inputCategory}
     }).afterClosed().subscribe(
       resp => {

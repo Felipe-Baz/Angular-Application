@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CATEGORY_DATA } from '../category/category.component';
+import { ChecklistEditComponent } from '../checklist-edit/checklist-edit.component';
 import { DialogComponent } from '../dialog/dialog.component';
-import { Category } from '../_models/category';
 import { Item } from '../_models/item';
 
 export const CHECKLIST_DATA = [
@@ -57,6 +57,18 @@ export class ChecklistComponent implements OnInit {
 
   public editItem(inputChecklist: Item) {
     console.log('editar item na checklist');
+
+    this.dialog.open(ChecklistEditComponent, {
+      data: { UpdatableinputChecklist: inputChecklist, actionName: 'Editar'}
+    }).afterClosed().subscribe(
+      resp => {
+        if (resp) {
+          console.log('Categoria editada com sucesso');
+        } else {
+          console.log('Categoria não editada com sucesso');
+        }
+      }
+    )
   }
 
   public deleteItem(inputChecklist: Item) {
@@ -85,3 +97,7 @@ export class ChecklistComponent implements OnInit {
     console.log(`status alterado ${status}`)
   }
 }
+function checklistEditComponent(checklistEditComponent: any, arg1: { disableClose: true; data: { editableCategory: Item; }; }) {
+  throw new Error('Function not implemented.');
+}
+

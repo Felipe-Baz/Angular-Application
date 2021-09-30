@@ -1,22 +1,21 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Category } from '../_models/category';
+import { Item } from '../_models/item';
 
 @Component({
-  selector: 'app-category-edit',
-  templateUrl: './category-edit.component.html',
-  styleUrls: ['./category-edit.component.css']
+  selector: 'app-checklist-edit',
+  templateUrl: './checklist-edit.component.html',
+  styleUrls: ['./checklist-edit.component.css']
 })
-  
-export class CategoryEditComponent implements OnInit {
+export class ChecklistEditComponent implements OnInit {
 
-  public editableCategory!: Category;
+  public editableItem!: Item;
   public actionName: string = 'Editar';
 
-  constructor(private dialogRef: MatDialogRef<CategoryEditComponent>,
+  constructor(private dialogRef: MatDialogRef<ChecklistEditComponent>,
     @Inject(MAT_DIALOG_DATA) dialogData: any) {
-    if (dialogData.editableCategory != null) {
-      this.editableCategory = dialogData.editableCategory;
+    if (dialogData.UpdatableinputChecklist != null) {
+      this.editableItem = dialogData.UpdatableinputChecklist;
     }
     if (dialogData.actionName != null) {
       this.actionName = dialogData.actionName;
@@ -36,5 +35,4 @@ export class CategoryEditComponent implements OnInit {
       this.dialogRef.close();
     }
   }
-
 }

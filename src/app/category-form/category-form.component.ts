@@ -7,15 +7,13 @@ import { Category } from '../_models/category';
   templateUrl: './category-form.component.html',
   styleUrls: ['./category-form.component.css']
 })
+
 export class CategoryFormComponent implements OnInit {
 
   @Input() public actionName = 'Editar';
   public categoryForm!: FormGroup;
-
   @Output() closeModalEventEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   @Input() public editableCategory!: Category;
-
   public isFormReady = false;
 
   constructor(private formBuilder: FormBuilder) {
