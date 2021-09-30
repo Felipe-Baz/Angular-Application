@@ -6,10 +6,10 @@ import { Category } from '../_models/category';
 
 export const CATEGORY_DATA = [
   { name: 'Educação', guid: 'aaa-bbb-ccc-dddd' },
-  { name: 'Saude', guid: 'aaa-bbb-ccc-dddd' },
+  { name: 'Saúde', guid: 'aaa-bbb-ccc-dddd' },
   { name: 'Trabalho', guid: 'aaa-bbb-ccc-dddd' },
   { name: 'Outros', guid: 'aaa-bbb-ccc-dddd' }
-]
+];
 
 @Component({
   selector: 'app-category',
@@ -49,14 +49,14 @@ export class CategoryComponent implements OnInit {
       data: {
         dialogMsg: 'Você tem certeza que gostaria de apagar a categoria?',
         leftButtonLabel: 'Cancelar',
-        rightButtonLabel: 'Sim'
+        rightButtonLabel: 'Apagar'
       }
     }).afterClosed().subscribe(
       resp => {
         if (resp) {
           console.log('Categoria apagada com sucesso');
         } else {
-          console.log('Categoria não apagada com sucesso');
+          console.log('Categoria não apagada');
         }
       }
     )
@@ -73,7 +73,7 @@ export class CategoryComponent implements OnInit {
         if (resp) {
           console.log('Categoria Criada com sucesso');
         } else {
-          console.log('Criação não realizada com sucesso');
+          console.log('Criação não realizada');
         }
       }
     )
