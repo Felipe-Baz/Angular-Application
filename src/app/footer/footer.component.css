@@ -1,8 +1,38 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css");
+
+.footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .app-footer-container {
-  justify-content: flex-end;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .app-footer-container span {
   font-size: 1rem;
   font-weight: lighter;
+}
+
+.footer-content{
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-content p {
+  font-family: var(--font-secondary);
+  color: lightgrey;
+  font-size: 1.4rem;
+}
+
+.social-list a {
+  margin: 0 2rem;
+  color: lightgrey;
+  font-size: 1.4rem;
+}
+
+.social-list ul {
+  display: flex;
 }
