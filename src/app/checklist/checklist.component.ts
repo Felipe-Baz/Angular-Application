@@ -1,39 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CATEGORY_DATA } from '../category/category.component';
 import { ChecklistEditComponent } from '../checklist-edit/checklist-edit.component';
 import { DialogComponent } from '../dialog/dialog.component';
 import { Item } from '../_models/item';
+import { ChecklistService } from '../service/checklist.service';
 
-export const CHECKLIST_DATA = [
-  {
-    name: 'Site Portfolio',
-    complete: true,
-    description: 'Criar um site para o portfolio de um desenvolvedor',
-    endDate: Date.now(),
-    startDate: Date.now(),
-    category: CATEGORY_DATA.find(x => x.name == 'Educação'),
-    guid: 'aaa-bbb-ccc-dddd'
-  },
-  {
-    name: 'Clinico Geral',
-    complete: false,
-    description: 'Ir ao clinico geral',
-    endDate: Date.now(),
-    startDate: Date.now(),
-    category: CATEGORY_DATA.find(x => x.name == 'Saúde'),
-    guid: 'aaa-bbb-ccc-dddd'
-  },
-  {
-    name: 'API do site Angular',
-    complete: false,
-    description: 'Criar a API springboot do site Angular',
-    endDate: Date.now(),
-    startDate: Date.now(),
-    category: CATEGORY_DATA.find(x => x.name == 'Trabalho'),
-    guid: 'aaa-bbb-ccc-dddd'
-  }
-];
+
 
 @Component({
   selector: 'app-checklist',
@@ -44,11 +16,16 @@ export const CHECKLIST_DATA = [
 export class ChecklistComponent implements OnInit {
 
   public displayedColumns: string[] = ['id', 'name','complete', 'description', 'endDate', 'startDate', 'category', 'actions'];
-  public dataSource = CHECKLIST_DATA;
+  public dataSource: Item[] = [];
 
-  constructor(private dialog:MatDialog) { }
+  constructor(private dialog:MatDialog, private ChecklistService: ChecklistService) { }
 
   ngOnInit(): void {
+    this.ChecklistService.getALLChecklist().subscribe(
+      (resp: Item[]) => {
+        this.dataSource = resp;
+      }
+    )
   }
 
   public createNewitem() {

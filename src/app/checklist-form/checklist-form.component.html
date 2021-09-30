@@ -7,7 +7,7 @@
     </mat-card-header>
 
     <mat-card-content>
-      <form [formGroup]="checklistForm" #FormDirective="ngForm" *ngIf="isFormReady">
+      <form [formGroup]="checklistForm" #FormDirective="ngForm">
 
         <div>
 
@@ -49,7 +49,7 @@
             <mat-label>Data de Inicio</mat-label>
             <input matInput [matDatepicker]="picker" formControlName="startDate">
             <mat-datepicker-toggle matSuffix [for]="picker">
-              <mat-icon matDatepickerToggleIcon></mat-icon>
+              <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
             </mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <mat-error *ngIf="checklistForm?.controls?.startDate?.errors?.required">A Data de inicio da tarefa é obrigatória.</mat-error>
@@ -59,7 +59,7 @@
             <mat-label>Data de Fim</mat-label>
             <input matInput [matDatepicker]="picker" formControlName="endDate">
             <mat-datepicker-toggle matSuffix [for]="picker">
-              <mat-icon matDatepickerToggleIcon></mat-icon>
+              <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
             </mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <mat-error *ngIf="checklistForm?.controls?.endDate?.errors?.required">A Data de termino da tarefa é obrigatória.</mat-error>
