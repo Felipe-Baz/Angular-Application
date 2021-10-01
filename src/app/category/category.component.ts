@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CategoryEditComponent } from '../category-edit/category-edit.component';
 import { DialogComponent } from '../dialog/dialog.component';
 import { CategoryService } from '../service/category.service';
+import { SnackBarService } from '../service/snack-bar.service';
 import { Category } from '../_models/category';
 
 @Component({
@@ -10,12 +11,13 @@ import { Category } from '../_models/category';
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css']
 })
+
 export class CategoryComponent implements OnInit {
 
   public displayedColumns: string[] = ['id', 'name', 'actions'];
   public dataSource: Category[] = [];
 
-  constructor(private dialog:MatDialog, private categoryService: CategoryService) { }
+  constructor(private dialog:MatDialog, private categoryService: CategoryService, private snackBarService: SnackBarService) { }
 
   ngOnInit(): void {
     this.categoryService.getALLCategories().subscribe(
@@ -28,13 +30,14 @@ export class CategoryComponent implements OnInit {
   public editCategory(inputCategory: Category) {
 
     this.dialog.open(CategoryEditComponent, {
+      disableClose: true,
       data: { editableCategory: inputCategory}
     }).afterClosed().subscribe(
       resp => {
         if (resp) {
-          console.log('Categoria editada com sucesso');
+          this.snackBarService.showSnackBar('Categoria editada com sucesso');
         } else {
-          console.log('Categoria não editada com sucesso');
+          this.snackBarService.showSnackBar('Categoria não editada');
         }
       }
     )
@@ -52,9 +55,9 @@ export class CategoryComponent implements OnInit {
     }).afterClosed().subscribe(
       resp => {
         if (resp) {
-          console.log('Categoria apagada com sucesso');
+          this.snackBarService.showSnackBar('Categoria apagada com sucesso');
         } else {
-          console.log('Categoria não apagada');
+          this.snackBarService.showSnackBar('Categoria não apagada');
         }
       }
     )
@@ -69,9 +72,7 @@ export class CategoryComponent implements OnInit {
     }).afterClosed().subscribe(
       resp => {
         if (resp) {
-          console.log('Categoria Criada com sucesso');
-        } else {
-          console.log('Criação não realizada');
+          this.snackBarService.showSnackBar('Categoria Criada com sucesso');
         }
       }
     )

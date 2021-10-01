@@ -7,10 +7,11 @@ import { Item } from '../_models/item';
   templateUrl: './checklist-edit.component.html',
   styleUrls: ['./checklist-edit.component.css']
 })
+
 export class ChecklistEditComponent implements OnInit {
 
   public editableItem!: Item;
-  public actionName: string = 'Editar';
+  public actionName: string = '';
 
   constructor(private dialogRef: MatDialogRef<ChecklistEditComponent>,
     @Inject(MAT_DIALOG_DATA) dialogData: any) {
@@ -29,10 +30,10 @@ export class ChecklistEditComponent implements OnInit {
     //TODO: handle action - save/cancel
     if ($event) {
       //save
-      this.dialogRef.close();
+      this.dialogRef.close(true);
     } else {
       //cancel
-      this.dialogRef.close();
+      this.dialogRef.close(false);
     }
   }
 }

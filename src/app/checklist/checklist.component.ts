@@ -4,6 +4,7 @@ import { ChecklistEditComponent } from '../checklist-edit/checklist-edit.compone
 import { DialogComponent } from '../dialog/dialog.component';
 import { Item } from '../_models/item';
 import { ChecklistService } from '../service/checklist.service';
+import { SnackBarService } from '../service/snack-bar.service';
 
 
 
@@ -18,7 +19,7 @@ export class ChecklistComponent implements OnInit {
   public displayedColumns: string[] = ['id', 'name','complete', 'description', 'endDate', 'startDate', 'category', 'actions'];
   public dataSource: Item[] = [];
 
-  constructor(private dialog:MatDialog, private ChecklistService: ChecklistService) { }
+  constructor(private dialog:MatDialog, private ChecklistService: ChecklistService, private snackBarService: SnackBarService) { }
 
   ngOnInit(): void {
     this.ChecklistService.getALLChecklist().subscribe(
@@ -29,7 +30,17 @@ export class ChecklistComponent implements OnInit {
   }
 
   public createNewitem() {
-    console.log('criar novo item na checklist');
+
+    this.dialog.open(ChecklistEditComponent, {
+      disableClose: true,
+      data: { actionName: 'Criar'}
+    }).afterClosed().subscribe(
+      resp => {
+        if (resp) {
+          this.snackBarService.showSnackBar('Tarefa Criada com sucesso');
+        }
+      }
+    )
   }
 
   public editItem(inputChecklist: Item) {
@@ -40,9 +51,9 @@ export class ChecklistComponent implements OnInit {
     }).afterClosed().subscribe(
       resp => {
         if (resp) {
-          console.log('Categoria editada com sucesso');
+          this.snackBarService.showSnackBar('Tarefa editada com sucesso');
         } else {
-          console.log('Categoria não editada com sucesso');
+          this.snackBarService.showSnackBar('Tarefa não editada');
         }
       }
     )
@@ -61,9 +72,9 @@ export class ChecklistComponent implements OnInit {
     }).afterClosed().subscribe(
       resp => {
         if (resp) {
-          console.log('Tarefa apagada com sucesso');
+          this.snackBarService.showSnackBar('Tarefa apagada com sucesso');
         } else {
-          console.log('Tarefa não apagada');
+          this.snackBarService.showSnackBar('Tarefa não apagada');
         }
       }
     )
@@ -73,8 +84,5 @@ export class ChecklistComponent implements OnInit {
   public checkItem(status: boolean) {
     console.log(`status alterado ${status}`)
   }
-}
-function checklistEditComponent(checklistEditComponent: any, arg1: { disableClose: true; data: { editableCategory: Item; }; }) {
-  throw new Error('Function not implemented.');
 }
 

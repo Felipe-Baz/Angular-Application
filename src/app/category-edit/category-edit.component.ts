@@ -7,7 +7,7 @@ import { Category } from '../_models/category';
   templateUrl: './category-edit.component.html',
   styleUrls: ['./category-edit.component.css']
 })
-  
+
 export class CategoryEditComponent implements OnInit {
 
   public editableCategory!: Category;
@@ -30,10 +30,10 @@ export class CategoryEditComponent implements OnInit {
     //TODO: handle action - save/cancel
     if ($event) {
       //save
-      this.dialogRef.close();
+      this.dialogRef.close(true);
     } else {
       //cancel
-      this.dialogRef.close();
+      this.dialogRef.close(false);
     }
   }
 
