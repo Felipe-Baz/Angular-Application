@@ -1,0 +1,13 @@
+.home-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-content h1{
+  font-size: 30px !important;
+  font-weight: bold;
+  color: aqua;
+  margin-top: 100px;
+}
